@@ -25,15 +25,14 @@ def detection(file_path):
 	    hotdog_flag = False
 
 	    labels_dict = {}
-		for pred in labels:
-		    labels_dict[pred.description] = pred.score
-
+	    for pred in labels:
+	    	labels_dict[pred.description] = pred.score
 	    if "Hot dog" not in labels_dict.keys():
 	    	pass
-		else:
-			# make sure score is above 80%
-		    if labels_dict["Hot dog"] > .8:
-		    	hotdog_flag = True
+	    else:
+	    	# make sure score is above 80%
+	    	if labels_dict["Hot dog"] > .8:
+			    	hotdog_flag = True
 
     except:
     	raise Exception('Failed')

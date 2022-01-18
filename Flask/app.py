@@ -5,9 +5,13 @@ import json
 import sys
 
 # import py functions
-sys.path.append('/functions')
-from predict_image import *
-# from Flask.functions.predict_image import *
+# sys.path.append('/functions')
+# from predict_image import *
+# from s3_download import *
+# from s3_upload import *
+from functions.predict_image import *
+from functions.s3_download import *
+from functions.s3_upload import *
 
 # https://www.youtube.com/watch?v=6WruncSoCdI&ab_channel=JulianNash
 
@@ -15,12 +19,24 @@ app = Flask(__name__)
 
 @app.route("/")
 def index():
-	return render_template('index.html', date=date_today )
+	return render_template('index.html')
 
-@app.route("/predict" methods=['POST', 'GET'])
+@app.route("/predict", methods=['POST', 'GET'])
 def predict():
 	if request.method == 'POST':
-		
+		file = request.form['img_file']
+		file_path = './static/media/' + file
+		prediction_bool = detection(file_path)
+
+		if prediction_bool == True:
+			send = 'Hot Dog'
+		else:
+			send = 'Not Hot Dog'
+
+		return send
+
+	if request.method == 'GET':
+		pass
 
 if __name__ == "__main__":
 	app.run(debug=True,threaded=False)
