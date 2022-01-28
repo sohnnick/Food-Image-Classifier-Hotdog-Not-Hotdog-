@@ -3,7 +3,7 @@ Inspired by Silicon Valley's Seefood app (WORK IN PROGRESS)
 
 <hr>
 
-### Team Members
+### Contributors
 Nicholas Sohn, William Liu
 
 ### Technologies and Languages
