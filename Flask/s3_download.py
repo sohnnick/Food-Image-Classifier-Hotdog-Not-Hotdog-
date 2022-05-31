@@ -7,8 +7,7 @@ import matplotlib.image as mpimg
 from botocore.exceptions import NoCredentialsError
 from PIL import Image
 
-ACCESS_KEY = 'AKIAT2R2N7QSFVDKK2ZA'
-SECRET_KEY = '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'
+import sys
 
 def extract_all_images():
 	s3 = boto3.resource('s3',aws_access_key_id=ACCESS_KEY, aws_secret_access_key=SECRET_KEY)

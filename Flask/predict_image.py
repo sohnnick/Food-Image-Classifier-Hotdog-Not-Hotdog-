@@ -6,7 +6,7 @@ import pandas as pd
 from google.cloud import vision
 from google.cloud.vision_v1 import types
 
-os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = '../API Keys/tidy-rainfall-319903-abacb870352d.json'
+os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = '../API Keys/..'
 
 def detection(file_path):
     # instantiates a client
