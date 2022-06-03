@@ -6,36 +6,36 @@ import pandas as pd
 from google.cloud import vision
 from google.cloud.vision_v1 import types
 
-os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = '../API Keys/..'
+os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = 'tidy-rainfall-319903-aa8415a5bcc3.json'
 
 def detection(file_path):
-    # instantiates a client
-    client = vision.ImageAnnotatorClient()
-    
-    # extract image (CAN BE CHANGED)
-    with io.open(file_path, 'rb') as image_file:
-        content = image_file.read()
-    image = vision.Image(content=content)
+	# instantiates a client
+	client = vision.ImageAnnotatorClient()
 
-    # performs label detection on the image file
-    try:
-	    response = client.label_detection(image=image)
-	    labels = response.label_annotations
+	# extract image (CAN BE CHANGED)
+	with io.open(file_path, 'rb') as image_file:
+		content = image_file.read()
+	image = vision.Image(content=content)
 
-	    hotdog_flag = False
+	# performs label detection on the image file
+	try:
+		response = client.label_detection(image=image)
+		labels = response.label_annotations
 
-	    labels_dict = {}
-	    for pred in labels:
-	    	labels_dict[pred.description] = pred.score
-	    if "Hot dog" not in labels_dict.keys():
-	    	pass
-	    else:
-	    	# make sure score is above 80%
-	    	if labels_dict["Hot dog"] > .8:
-			    	hotdog_flag = True
+		hotdog_flag = False
 
-    except:
-    	raise Exception('Failed')
-    	return None
-    
-    return hotdog_flag
+		labels_dict = {}
+		for pred in labels:
+			labels_dict[pred.description] = pred.score
+		if "Hot dog" not in labels_dict.keys():
+			pass
+		else:
+			# make sure score is above 80%
+			if labels_dict["Hot dog"] > .8:
+					hotdog_flag = True
+
+	except:
+		raise Exception('Failed')
+		return None
+
+	return hotdog_flag

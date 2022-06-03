@@ -6,18 +6,18 @@ import sys
 
 # import py functions
 # sys.path.append('/functions')
-# from predict_image import *
-# from s3_download import *
-# from s3_upload import *
-from functions.predict_image import *
-from functions.s3_download import *
-from functions.s3_upload import *
+from predict_image import *
+from s3 import *
 
 # https://www.youtube.com/watch?v=6WruncSoCdI&ab_channel=JulianNash
 
 app = Flask(__name__)
 
-@app.route("/")
+# @app.route("/")
+# def index():
+# 	return render_template('index.html')
+
+@app.route("/test")
 def index():
 	return render_template('index.html')
 
