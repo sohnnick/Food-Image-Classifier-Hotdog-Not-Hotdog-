@@ -1,13 +1,11 @@
 # Food-Image-Classifier-Hotdog-Not-Hotdog-
-Inspired by Silicon Valley's Seefood app (WORK IN PROGRESS)
-
-<hr>
+Inspired by Silicon Valley's Seefood app
 
 ### Contributors
 Nicholas Sohn, William Liu
 
 ### Technologies and Languages
-React, Flask, AWS, JS, Python
+React, Flask, JS, Python, S3
 
 ### Libraries
-Google Vision
+Google Vision, Boto3
